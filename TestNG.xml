@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ExampleSuite" verbose="2">
+    <test name="Sample test">
+        <parameter name="username" value="testuser"/>
+        <parameter name="password" value="testpassword"/>
+        <classes>
+            <class name="TestNgExamples.ExcludeTestExample">
+                <methods>
+                    <include name="method1"/>
+                    <exclude name="method2"/>
+                </methods>
+            </class>
+            <class name="dataProviderExample.DataProviderExp">
+            </class>
+        </classes>
+    </test>
+</suite>
