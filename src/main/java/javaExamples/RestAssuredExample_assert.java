@@ -45,7 +45,7 @@ public class RestAssuredExample_assert {
     }
 
     @Test(dataProvider = "calculator_Data")
-    public void soapApiTest(int firstNumber, int secondNumber, int expectedResult , String operation ) {
+    public void soapApiTest(int firstNumber, int secondNumber, int expectedResult, String operation) {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/soap+xml");
         headers.put("charset", "UTF-8");
@@ -54,10 +54,10 @@ public class RestAssuredExample_assert {
         String reqBody = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:tem=\"http://tempuri.org/\">\n" +
                 "   <soap:Header/>\n" +
                 "   <soap:Body>\n" +
-                "      <tem:"+ operation +">\n" +
+                "      <tem:" + operation + ">\n" +
                 "         <tem:intA>" + firstNumber + "</tem:intA>\n" +
                 "         <tem:intB>" + secondNumber + "</tem:intB>\n" +
-                "      </tem:"+ operation +">\n" +
+                "      </tem:" + operation + ">\n" +
                 "   </soap:Body>\n" +
                 "</soap:Envelope>";
 
@@ -69,7 +69,7 @@ public class RestAssuredExample_assert {
                 post("http://www.dneonline.com/calculator.asmx");
 
         int actualResult = getResultValue(resp,
-                "/soap:Envelope/soap:Body/"+ operation+"Response/"+ operation+"Result");
+                "/soap:Envelope/soap:Body/" + operation + "Response/" + operation + "Result");
 
         Assert.assertEquals(actualResult, expectedResult);
     }
@@ -91,11 +91,12 @@ public class RestAssuredExample_assert {
     }
 
     @DataProvider(name = "calculator_Data")
-    public Object[][] createArithmaticData(){
+    public Object[][] create_ArithmeticData() {
         return new Object[][]{
-                {20,10,10,"Subtract"},
-                {10,20,200,"Multiply"},
-                {500,5,100,"Divide"}
+                {20, 10, 10, "Subtract"},
+                {10, 20, 200, "Multiply"},
+                {500, 5, 100, "Divide"},
+                {10, 200, 210, "Add"}
         };
     }
 }
