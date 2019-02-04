@@ -1,3 +1,5 @@
+package javaExamples;
+
 import org.testng.annotations.Test;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
