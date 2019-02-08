@@ -56,6 +56,9 @@ public class RestAssured_FindBrokenLinks {
     }
 
     private int getResponseCode(String href) {
-        return given().when().get(href).statusCode();
+        return given().
+                when().
+                get(href).
+                statusCode();
     }
 }

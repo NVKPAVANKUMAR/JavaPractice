@@ -26,12 +26,18 @@ public class RestAssuredExample_2 {
 
     @Test
     public void test_01() {
-        Response resp = given().spec(rspec).when().get("");
+        Response resp = given().
+                spec(rspec).
+                when().
+                get("");
         resp.then().contentType(ContentType.JSON).statusCode(200);
     }
 
     //@Test
     public void test_02() {
-        Response resp = given().param("query").when().get("");
+        Response resp = given().
+                param("query").
+                when().
+                get("");
     }
 }

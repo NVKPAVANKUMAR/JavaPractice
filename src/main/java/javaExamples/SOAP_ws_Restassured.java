@@ -1,6 +1,5 @@
-package appium;
+package javaExamples;
 
-import Applitools.DocumentBuilderDemo;
 import com.jayway.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 
 import static com.jayway.restassured.RestAssured.given;
 
-public class FarmCare {
+public class SOAP_ws_Restassured {
 
     private String baseURI = null;
 
@@ -35,15 +34,16 @@ public class FarmCare {
                 "      </web:CapitalCity>\n" +
                 "   </soap:Body>\n" +
                 "</soap:Envelope>";
-
-
+        // Passing request body via string
 
         Response resp = given().
                 request().
                 headers(headers).
-                body(DocumentBuilderDemo.main(countryISOCode)).
+                body(DocumentBuilderDemo.getRequestBody(countryISOCode)).
                 when().
                 post(baseURI);
+
+        // resp.prettyPrint();
 
         String actualResult = getResultValue(resp,
                 "/soap:Envelope/soap:Body/m:CapitalCityResponse/m:CapitalCityResult");

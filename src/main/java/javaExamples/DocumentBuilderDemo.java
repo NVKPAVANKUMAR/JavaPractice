@@ -16,7 +16,7 @@ import java.io.StringWriter;
 public class DocumentBuilderDemo {
 
     @Test
-    public static String main(String countryISO) {
+    public static String getRequestBody(String countryISO) {
 
         // create a new DocumentBuilderFactory
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -26,11 +26,11 @@ public class DocumentBuilderDemo {
             DocumentBuilder builder = factory.newDocumentBuilder();
 
             // create a new document from input stream
-            FileInputStream fis = new FileInputStream("resource/GetCapitalCity_XML");
+            FileInputStream fis = new FileInputStream("C:\\Users\\pavan.nemalikanti\\IdeaProjects\\JavaPractice\\src\\main\\resources\\GetCapitalCity_XML.xml");
             Document doc = builder.parse(fis);
             doc.getDocumentElement().normalize();
 
-            //Get all employees
+            //Get all
             NodeList nList = doc.getElementsByTagName("web:CapitalCity");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -43,6 +43,7 @@ public class DocumentBuilderDemo {
 
                     //write the updated document to file or console
                     doc.getDocumentElement().normalize();
+
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
                     Transformer transformer = transformerFactory.newTransformer();
                     DOMSource source = new DOMSource(doc);

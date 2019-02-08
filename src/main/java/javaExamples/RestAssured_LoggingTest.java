@@ -29,8 +29,13 @@ public class RestAssured_LoggingTest {
         given().
                 param("query", "restaurants in mumbai").
                 param("key", "AIzaSyD0crewmhY9pD7hKKOWuIjbZRcufru5NIE").
-                when().get("maps/api/place/textsearch/json").
-                then().log().ifError().assertThat().statusCode(200);
+                when().
+                get("maps/api/place/textsearch/json").
+                then().
+                log().
+                ifError().
+                assertThat().
+                statusCode(200);
     }
 
 }

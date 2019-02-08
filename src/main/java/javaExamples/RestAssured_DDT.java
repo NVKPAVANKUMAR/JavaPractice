@@ -37,5 +37,6 @@ public class RestAssured_DDT {
                 when().
                 get("http://api.zippopotam.us/us/12345");
         resp.prettyPrint();
+
     }
 }

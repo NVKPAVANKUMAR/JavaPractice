@@ -57,10 +57,15 @@ public class RestAssuredExample {
     @Test
     public void test_07() {
         Response resp = given().
-                when().contentType(ContentType.JSON).
+                when().
+                contentType(ContentType.JSON).
                 get("https://reqres.in/api/users?page=2");
         resp.prettyPrint();
-        int res = resp.then().contentType(ContentType.JSON).extract().path("data.id");
+        int res = resp.
+                then().
+                contentType(ContentType.JSON).
+                extract().
+                path("data.id");
         System.out.println(res);
         assert resp.statusCode() == 200;
     }

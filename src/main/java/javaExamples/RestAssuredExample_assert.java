@@ -1,6 +1,7 @@
 package javaExamples;
 
 import com.jayway.restassured.builder.ResponseSpecBuilder;
+import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.ResponseSpecification;
 import org.testng.Assert;
@@ -17,7 +18,8 @@ import static org.hamcrest.Matchers.*;
 public class RestAssuredExample_assert {
 
 
-    private ResponseSpecification responseSpecification = new ResponseSpecBuilder().
+    private ResponseSpecification responseSpecification = new
+            ResponseSpecBuilder().
             expectContentType("application/json").
             expectStatusCode(200).
             expectResponseTime(lessThanOrEqualTo(4L), SECONDS).
@@ -99,4 +101,18 @@ public class RestAssuredExample_assert {
                 {10, 200, 210, "Add"}
         };
     }
+
+
+    @Test
+    public void test_GetViewsCount(){
+        String URI = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=iSB-8Yes9XE&key=AIzaSyD0crewmhY9pD7hKKOWuIjbZRcufru5NIE";
+        Response resp = given().
+                        when().
+                        contentType(ContentType.JSON).
+                        get(URI);
+        resp.prettyPrint();
+
+
+    }
+
 }
